@@ -10,17 +10,19 @@ public class RawTrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false, unique = true)
+    private String eventId;
     private String tradeId;
-    private String symbol;
+    private String side;
+    private String source;
     private Integer quantity;
     private Double price;
-    private String status;
+    
+    private LocalDateTime tradeTimestamp;
+
     private Long kafkaOffset;
 
     private Boolean processedFlag = false;
-
-    private LocalDateTime createdAt = LocalDateTime.now();
 
     public Long getId() {
         return id;
@@ -36,14 +38,6 @@ public class RawTrade {
 
     public void setTradeId(String tradeId) {
         this.tradeId = tradeId;
-    }
-
-    public String getSymbol() {
-        return symbol;
-    }
-
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
     }
 
     public Integer getQuantity() {
@@ -62,14 +56,6 @@ public class RawTrade {
         this.price = price;
     }
 
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public Long getKafkaOffset() {
         return kafkaOffset;
     }
@@ -86,12 +72,36 @@ public class RawTrade {
         this.processedFlag = processedFlag;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getEventId() {
+        return eventId;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setEventId(String eventId) {
+        this.eventId = eventId;
+    }
+
+    public String getSide() {
+        return side;
+    }
+
+    public void setSide(String side) {
+        this.side = side;
+    }
+
+    public String getSource() {
+        return source;
+    }
+
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public LocalDateTime getTradeTimestamp() {
+        return tradeTimestamp;
+    }
+
+    public void setTradeTimestamp(LocalDateTime tradeTimestamp) {
+        this.tradeTimestamp = tradeTimestamp;
     }
 
     

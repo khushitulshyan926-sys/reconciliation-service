@@ -60,8 +60,8 @@ public class RuleEngine {
             ));
         }
 
-        // Status validation
-        if (!"NEW".equals(trade.getStatus())) {
+        // Side validation
+        if (!"BUY".equals(trade.getSide())) {
             results.add(new ValidationResult(
                     "StatusValidation",
                     false,
