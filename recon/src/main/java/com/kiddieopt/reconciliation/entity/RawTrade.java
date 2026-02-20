@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "raw_trades_v1", schema = "raw_schema_v1")
+@Table(name = "raw_trades_v2", schema = "raw_schema_v2")
 public class RawTrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

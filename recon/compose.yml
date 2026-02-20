@@ -2,8 +2,11 @@ services:
   postgres:
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=raw_trades_v1'
+      - 'POSTGRES_DB=raw_trades_v2'
       - 'POSTGRES_PASSWORD=password'
       - 'POSTGRES_USER=postgres'
     ports:
       - "5432:5432"
+    volumes:
+          - postgres_data:/var/lib/postgresql/data
+          - ./init.sql:/docker-entrypoint-initdb.d/init.sql
