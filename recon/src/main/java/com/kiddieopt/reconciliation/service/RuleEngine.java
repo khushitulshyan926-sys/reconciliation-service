@@ -61,17 +61,20 @@ public class RuleEngine {
         }
 
         // Side validation
-        if (!"BUY".equals(trade.getSide())) {
+        if (trade.getSide() == null ||
+                (!trade.getSide().equalsIgnoreCase("BUY")
+                 && !trade.getSide().equalsIgnoreCase("SELL"))) {
+
             results.add(new ValidationResult(
-                    "StatusValidation",
+                    "SideValidation",
                     false,
-                    "Invalid status"
+                    "Side must be BUY or SELL"
             ));
         } else {
             results.add(new ValidationResult(
-                    "StatusValidation",
+                    "SideValidation",
                     true,
-                    "Valid status"
+                    "Valid side"
             ));
         }
 
